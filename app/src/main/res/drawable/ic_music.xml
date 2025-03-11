@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,3v10.55c-0.59,-0.34 -1.27,-0.55 -2,-0.55 -2.21,0 -4,1.79 -4,4s1.79,4 4,4 4,-1.79 4,-4V7h4V3h-6z" />
+</vector>
+
+<!-- Explanation for junior developers:
+1. This is a vector drawable for a music note icon
+2. Vector drawables are resolution-independent and scale without losing quality
+3. The viewportWidth and viewportHeight define the coordinate system
+4. The pathData contains the SVG path that draws the music note shape
+5. This icon is used for the music category in the categories section
+6. The white fill color ensures it's visible against colored backgrounds
+--> 

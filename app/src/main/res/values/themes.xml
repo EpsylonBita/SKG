@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme -->
+    <style name="Theme.GreekEvents" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent_dark</item>
+        <item name="colorOnSecondary">@color/white</item>
+        
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        
+        <!-- Typography -->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.GreekEvents.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.GreekEvents.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.GreekEvents.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.GreekEvents.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.GreekEvents.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.GreekEvents.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.GreekEvents.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.GreekEvents.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.GreekEvents.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.GreekEvents.Body2</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.GreekEvents.Caption</item>
+        <item name="textAppearanceButton">@style/TextAppearance.GreekEvents.Button</item>
+        
+        <!-- Shapes -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.GreekEvents.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.GreekEvents.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.GreekEvents.LargeComponent</item>
+    </style>
+    
+    <!-- Typography styles -->
+    <style name="TextAppearance.GreekEvents.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">96sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">60sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">48sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">34sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/roboto</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    
+    <style name="TextAppearance.GreekEvents.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+    
+    <!-- Shape appearances -->
+    <style name="ShapeAppearance.GreekEvents.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+    
+    <style name="ShapeAppearance.GreekEvents.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+    
+    <style name="ShapeAppearance.GreekEvents.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+</resources>
+
+<!-- Explanation:
+The themes.xml file defines the visual design language of the application:
+- It extends MaterialComponents theme for a modern look and feel
+- It defines color scheme using Material Design principles
+- It sets up typography styles for consistent text appearance
+- It defines shape appearances for UI components
+- Custom styles are created for different text sizes and components
+- We use NoActionBar to implement our own custom toolbar
+--> 

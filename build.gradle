@@ -1,0 +1,60 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    // Define versions in a single place
+    ext {
+        // Sdk and tools
+        minSdkVersion = 23
+        targetSdkVersion = 33
+        compileSdkVersion = 33
+        
+        // App dependencies
+        kotlinVersion = '1.8.0'
+        coreKtxVersion = '1.10.1'
+        appCompatVersion = '1.6.1'
+        materialVersion = '1.9.0'
+        constraintLayoutVersion = '2.1.4'
+        lifecycleVersion = '2.6.1'
+        navigationVersion = '2.6.0'
+        roomVersion = '2.5.2'
+        retrofitVersion = '2.9.0'
+        coroutinesVersion = '1.6.4'
+        hiltVersion = '2.44'
+        glideVersion = '4.15.1'
+        firebaseVersion = '32.2.0'
+    }
+    
+    repositories {
+        google()
+        mavenCentral()
+    }
+    
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.0.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+        classpath 'com.google.gms:google-services:4.3.15'
+        
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+// Explanation:
+// - This is the top-level build.gradle file that sets up project-wide configurations
+// - ext {} block defines version constants used throughout the project for consistency
+// - The repositories {} block specifies where Gradle should look for dependencies
+// - The dependencies {} block defines build-time tools needed for the project
+//   including Kotlin plugin, Navigation SafeArgs, Hilt for dependency injection,
+//   and Google Services for Firebase integration
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+} 

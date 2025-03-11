@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/colorAccent" />
+    <corners android:radius="4dp" />
+</shape>
+
+<!-- Explanation for junior developers:
+1. This drawable creates a solid colored rectangle with rounded corners
+2. It uses the app's accent color to make the price stand out
+3. The small corner radius (4dp) gives it a subtle rounded appearance
+4. This is used for the price badge that appears at the bottom of event cards
+5. Using the app's accent color maintains visual consistency across the app
+--> 

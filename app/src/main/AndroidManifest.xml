@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.greekevents">
+
+    <!-- Internet permissions for fetching event data -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <!-- Location permissions for finding nearby events -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".GreekEventsApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.GreekEvents">
+        
+        <!-- Main Activity - the entry point of our application -->
+        <activity
+            android:name=".presentation.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Other activities will be added here -->
+        
+    </application>
+
+</manifest>
+
+<!-- Explanation:
+The AndroidManifest.xml serves as a crucial configuration file for Android apps:
+- It declares the permissions needed by the app (internet, network state, location)
+- It defines the application properties like icon, label, and theme
+- It specifies the main activity that will be launched when the app starts
+- The android:exported="true" attribute allows the activity to be started by external components
+- Intent filters define the activity's capabilities and how it can be launched
+--> 

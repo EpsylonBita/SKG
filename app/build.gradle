@@ -1,0 +1,111 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    namespace 'com.greekevents'
+    compileSdk rootProject.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.greekevents"
+        minSdk rootProject.minSdkVersion
+        targetSdk rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+    
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+// Explanation:
+// This app-level build.gradle file configures:
+// - The plugins we need (Kotlin, Kapt for annotation processing, Hilt, Navigation SafeArgs, Google Services)
+// - Android-specific settings like SDK versions and application ID
+// - Build types for different environments (release with minification enabled)
+// - Java and Kotlin version compatibility
+// - ViewBinding feature for type-safe view access
+
+dependencies {
+    // Android core libraries
+    implementation "androidx.core:core-ktx:$coreKtxVersion"
+    implementation "androidx.appcompat:appcompat:$appCompatVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    
+    // Architecture components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    
+    // Navigation component
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+    
+    // Room database
+    implementation "androidx.room:room-runtime:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    
+    // Retrofit for network calls
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.10.0"
+    
+    // Coroutines for async programming
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    
+    // Hilt for dependency injection
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    
+    // Glide for image loading
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    
+    // Firebase for authentication and analytics
+    implementation platform("com.google.firebase:firebase-bom:$firebaseVersion")
+    implementation "com.google.firebase:firebase-auth-ktx"
+    implementation "com.google.firebase:firebase-analytics-ktx"
+    
+    // Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
+// Explanation of dependencies:
+// - Core libraries provide fundamental Android functionality
+// - Architecture components help implement MVVM pattern
+// - Navigation component manages app navigation
+// - Room provides database functionality for local storage
+// - Retrofit handles network communication
+// - Coroutines simplify asynchronous programming
+// - Hilt simplifies dependency injection
+// - Glide efficiently loads and caches images
+// - Firebase provides authentication and analytics services
+// - Testing libraries support unit and instrumentation tests 

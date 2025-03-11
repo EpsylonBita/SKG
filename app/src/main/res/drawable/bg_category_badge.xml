@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#80000000" /> <!-- 50% transparent black -->
+    <corners android:radius="4dp" />
+</shape>
+
+<!-- Explanation for junior developers:
+1. This drawable creates a semi-transparent black rectangle with rounded corners
+2. The alpha value in the color (#80000000) makes it 50% transparent
+3. This ensures the badge is visible over any image background
+4. The small corner radius (4dp) gives it a subtle rounded appearance
+5. This is used for the category badge that appears over event images
+--> 

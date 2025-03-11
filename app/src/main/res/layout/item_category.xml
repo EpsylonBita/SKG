@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="120dp"
+    android:layout_height="120dp"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Category Background -->
+        <View
+            android:id="@+id/category_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/category_music"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Category Image -->
+        <ImageView
+            android:id="@+id/category_image_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:alpha="0.9"
+            android:contentDescription="@null"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toTopOf="@+id/category_name_text_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white"
+            tools:src="@drawable/ic_music" />
+
+        <!-- Category Name -->
+        <TextView
+            android:id="@+id/category_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="12dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Μουσική" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
+
+<!-- Explanation for junior developers:
+1. MaterialCardView:
+   - Creates a card with elevation and rounded corners
+   - Square dimensions (120dp x 120dp) create a grid-like appearance
+   - Small margin separates cards from each other
+
+2. Category Background:
+   - Fills the entire card with a category-specific color
+   - Colors are defined in colors.xml for each category type
+   - The background color helps users quickly identify different categories
+
+3. Category Image:
+   - Centered icon representing the category
+   - White tint ensures visibility against any background color
+   - Slight transparency (alpha=0.9) softens the appearance
+
+4. Category Name:
+   - Positioned at the bottom of the card
+   - Bold white text stands out against the colored background
+   - Center alignment and ellipsize handle varying text lengths
+
+5. Layout Structure:
+   - ConstraintLayout positions elements efficiently
+   - The image takes most of the space, with the text at the bottom
+   - Consistent margins create visual harmony
+
+6. Visual Design:
+   - The combination of color, icon, and text creates a distinctive, recognizable category card
+   - The square format works well in both horizontal and grid layouts
+   - The design follows Material Design principles for cards and typography
+--> 

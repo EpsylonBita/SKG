@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App information -->
+    <string name="app_name">Εκδηλώσεις Ελλάδας</string>
+    
+    <!-- Navigation Labels -->
+    <string name="menu_home">Αρχική</string>
+    <string name="menu_search">Αναζήτηση</string>
+    <string name="menu_categories">Κατηγορίες</string>
+    <string name="menu_profile">Προφίλ</string>
+    <string name="menu_favorites">Αγαπημένα</string>
+    
+    <!-- Search Screen -->
+    <string name="search_hint">Αναζήτηση εκδηλώσεων…</string>
+    <string name="filter_by_date">Ημερομηνία</string>
+    <string name="filter_by_location">Τοποθεσία</string>
+    <string name="recent_searches">Πρόσφατες αναζητήσεις</string>
+    <string name="clear_all">Καθαρισμός όλων</string>
+    <string name="search_results">Αποτελέσματα Αναζήτησης</string>
+    
+    <!-- Categories -->
+    <string name="category_music">Μουσική</string>
+    <string name="category_sports">Αθλητικά</string>
+    <string name="category_culture">Πολιτισμός</string>
+    <string name="category_art">Τέχνη</string>
+    <string name="category_food">Γαστρονομία</string>
+    <string name="category_theater">Θέατρο</string>
+    <string name="category_cinema">Σινεμά</string>
+    <string name="category_education">Εκπαίδευση</string>
+    <string name="category_technology">Τεχνολογία</string>
+    <string name="category_other">Άλλα</string>
+    
+    <!-- Event Details -->
+    <string name="event_details">Λεπτομέρειες Εκδήλωσης</string>
+    <string name="event_date">Ημερομηνία</string>
+    <string name="event_time">Ώρα</string>
+    <string name="event_location">Τοποθεσία</string>
+    <string name="event_description">Περιγραφή</string>
+    <string name="event_organizer">Διοργανωτής</string>
+    <string name="event_price">Τιμή</string>
+    <string name="event_website">Ιστοσελίδα</string>
+    <string name="event_contact">Επικοινωνία</string>
+    <string name="add_to_favorites">Προσθήκη στα αγαπημένα</string>
+    <string name="remove_from_favorites">Αφαίρεση από τα αγαπημένα</string>
+    <string name="share_event">Κοινοποίηση</string>
+    <string name="add_to_calendar">Προσθήκη στο ημερολόγιο</string>
+    <string name="buy_tickets">Αγορά εισιτηρίων</string>
+    <string name="related_events">Σχετικές εκδηλώσεις</string>
+    
+    <!-- Authentication -->
+    <string name="login">Σύνδεση</string>
+    <string name="register">Εγγραφή</string>
+    <string name="email">Email</string>
+    <string name="password">Κωδικός</string>
+    <string name="confirm_password">Επιβεβαίωση κωδικού</string>
+    <string name="forgot_password">Ξεχάσατε τον κωδικό σας;</string>
+    <string name="login_success">Επιτυχής σύνδεση!</string>
+    <string name="login_failed">Η σύνδεση απέτυχε</string>
+    <string name="logout">Αποσύνδεση</string>
+    <string name="create_account">Δημιουργία λογαριασμού</string>
+    <string name="already_have_account">Έχετε ήδη λογαριασμό;</string>
+    
+    <!-- Profile -->
+    <string name="profile_title">Το προφίλ μου</string>
+    <string name="edit_profile">Επεξεργασία προφίλ</string>
+    <string name="my_events">Οι εκδηλώσεις μου</string>
+    <string name="past_events">Προηγούμενες εκδηλώσεις</string>
+    <string name="upcoming_events">Προσεχείς εκδηλώσεις</string>
+    <string name="settings">Ρυθμίσεις</string>
+    <string name="notifications">Ειδοποιήσεις</string>
+    <string name="preferences">Προτιμήσεις</string>
+    <string name="language">Γλώσσα</string>
+    <string name="theme">Θέμα</string>
+    <string name="dark_mode">Σκοτεινό θέμα</string>
+    <string name="light_mode">Φωτεινό θέμα</string>
+    <string name="system_default">Προεπιλογή συστήματος</string>
+    
+    <!-- Error Messages -->
+    <string name="error_no_internet">Δεν υπάρχει σύνδεση στο διαδίκτυο</string>
+    <string name="error_server">Σφάλμα διακομιστή</string>
+    <string name="error_loading_events">Σφάλμα φόρτωσης εκδηλώσεων</string>
+    <string name="error_login">Σφάλμα σύνδεσης</string>
+    <string name="error_invalid_email">Μη έγκυρο email</string>
+    <string name="error_invalid_password">Ο κωδικός πρέπει να έχει τουλάχιστον 6 χαρακτήρες</string>
+    <string name="error_passwords_do_not_match">Οι κωδικοί δεν ταιριάζουν</string>
+    <string name="try_again">Προσπαθήστε ξανά</string>
+    
+    <!-- General -->
+    <string name="loading">Φόρτωση…</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Ακύρωση</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="delete">Διαγραφή</string>
+    <string name="confirm">Επιβεβαίωση</string>
+    <string name="back">Πίσω</string>
+    <string name="next">Επόμενο</string>
+    <string name="see_all">Δείτε όλα</string>
+    <string name="recommended_for_you">Προτεινόμενα για εσάς</string>
+    <string name="popular_events">Δημοφιλείς εκδηλώσεις</string>
+    <string name="nearby_events">Κοντινές εκδηλώσεις</string>
+    <string name="this_weekend">Αυτό το Σαββατοκύριακο</string>
+    <string name="today">Σήμερα</string>
+    <string name="tomorrow">Αύριο</string>
+    <string name="free">Δωρεάν</string>
+    <string name="refresh">Ανανέωση</string>
+    
+    <!-- Empty States -->
+    <string name="empty_recommended">Δεν υπάρχουν προτεινόμενες εκδηλώσεις</string>
+    <string name="empty_recommended_message">Συνδεθείτε και περιηγηθείτε σε περισσότερες εκδηλώσεις για να λάβετε προσωπικές προτάσεις.</string>
+    <string name="empty_popular">Δεν υπάρχουν δημοφιλείς εκδηλώσεις</string>
+    <string name="empty_popular_message">Δεν βρέθηκαν δημοφιλείς εκδηλώσεις αυτή τη στιγμή. Ελέγξτε ξανά αργότερα.</string>
+    <string name="empty_nearby">Δεν υπάρχουν κοντινές εκδηλώσεις</string>
+    <string name="empty_nearby_message">Δεν βρέθηκαν εκδηλώσεις κοντά στην τρέχουσα τοποθεσία σας. Δοκιμάστε να αλλάξετε την τοποθεσία σας.</string>
+    <string name="empty_categories">Δεν υπάρχουν διαθέσιμες κατηγορίες</string>
+    <string name="empty_categories_message">Δεν βρέθηκαν κατηγορίες εκδηλώσεων. Παρακαλώ ελέγξτε ξανά αργότερα.</string>
+    <string name="empty_search">Δεν βρέθηκαν αποτελέσματα</string>
+    <string name="empty_search_message">Δοκιμάστε διαφορετικούς όρους αναζήτησης ή φίλτρα.</string>
+    <string name="empty_favorites">Δεν έχετε αγαπημένες εκδηλώσεις</string>
+    <string name="empty_favorites_message">Προσθέστε εκδηλώσεις στα αγαπημένα σας για να τις βρείτε εύκολα αργότερα.</string>
+</resources>
+
+<!-- Explanation:
+The strings.xml file centralizes all text content in the application:
+- It allows for easy translation to different languages
+- It keeps the UI text separate from the code
+- It provides a single place to manage all text resources
+- The Greek language is used as requested for all text elements
+- The file is organized by sections for easier maintenance
+- Added new empty state messages for different sections of the app
+--> 

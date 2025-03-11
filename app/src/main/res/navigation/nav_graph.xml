@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <!-- Home Fragment -->
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.greekevents.presentation.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_eventDetailsFragment"
+            app:destination="@id/eventDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_categoryEventsFragment"
+            app:destination="@id/categoryEventsFragment" />
+    </fragment>
+
+    <!-- Search Fragment -->
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.greekevents.presentation.search.SearchFragment"
+        android:label="@string/menu_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_eventDetailsFragment"
+            app:destination="@id/eventDetailsFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_searchResultsFragment"
+            app:destination="@id/searchResultsFragment" />
+    </fragment>
+
+    <!-- Search Results Fragment -->
+    <fragment
+        android:id="@+id/searchResultsFragment"
+        android:name="com.greekevents.presentation.search.SearchResultsFragment"
+        android:label="@string/search_results"
+        tools:layout="@layout/fragment_search_results">
+        <argument
+            android:name="searchQuery"
+            app:argType="string" />
+        <argument
+            android:name="searchLocation"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="searchStartDate"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="searchEndDate"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_searchResultsFragment_to_eventDetailsFragment"
+            app:destination="@id/eventDetailsFragment" />
+    </fragment>
+
+    <!-- Categories Fragment -->
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.greekevents.presentation.categories.CategoriesFragment"
+        android:label="@string/menu_categories"
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/action_categoriesFragment_to_categoryEventsFragment"
+            app:destination="@id/categoryEventsFragment" />
+    </fragment>
+
+    <!-- Category Events Fragment -->
+    <fragment
+        android:id="@+id/categoryEventsFragment"
+        android:name="com.greekevents.presentation.categories.CategoryEventsFragment"
+        android:label="{categoryName}"
+        tools:layout="@layout/fragment_category_events">
+        <argument
+            android:name="categoryId"
+            app:argType="string" />
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_categoryEventsFragment_to_eventDetailsFragment"
+            app:destination="@id/eventDetailsFragment" />
+    </fragment>
+
+    <!-- Profile Fragment -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.greekevents.presentation.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_myEventsFragment"
+            app:destination="@id/myEventsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/homeFragment" />
+    </fragment>
+
+    <!-- Edit Profile Fragment -->
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.greekevents.presentation.profile.EditProfileFragment"
+        android:label="@string/edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+
+    <!-- Settings Fragment -->
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.greekevents.presentation.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <!-- My Events Fragment -->
+    <fragment
+        android:id="@+id/myEventsFragment"
+        android:name="com.greekevents.presentation.profile.MyEventsFragment"
+        android:label="@string/my_events"
+        tools:layout="@layout/fragment_my_events">
+        <action
+            android:id="@+id/action_myEventsFragment_to_eventDetailsFragment"
+            app:destination="@id/eventDetailsFragment" />
+    </fragment>
+
+    <!-- Event Details Fragment -->
+    <fragment
+        android:id="@+id/eventDetailsFragment"
+        android:name="com.greekevents.presentation.event.EventDetailsFragment"
+        android:label="@string/event_details"
+        tools:layout="@layout/fragment_event_details">
+        <argument
+            android:name="eventId"
+            app:argType="string" />
+    </fragment>
+
+    <!-- Login Fragment -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.greekevents.presentation.auth.LoginFragment"
+        android:label="@string/login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Register Fragment -->
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.greekevents.presentation.auth.RegisterFragment"
+        android:label="@string/register"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <!-- Forgot Password Fragment -->
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.greekevents.presentation.auth.ForgotPasswordFragment"
+        android:label="@string/forgot_password"
+        tools:layout="@layout/fragment_forgot_password" />
+
+</navigation>
+
+<!-- Explanation:
+The navigation graph defines the flow between different screens in our app:
+- Each <fragment> represents a destination in the app
+- The app:startDestination attribute defines the first screen users see (HomeFragment)
+- <action> elements define possible transitions between fragments
+- <argument> elements define data that can be passed between destinations
+- The tools:layout attribute associates fragments with their layouts
+- app:popUpTo and app:popUpToInclusive control the back stack behavior
+- The label attribute sets the title shown in the app bar
+--> 

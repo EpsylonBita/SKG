@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#000000"
+        android:pathData="M12,2C8.13,2 5,5.13 5,9c0,5.25 7,13 7,13s7,-7.75 7,-13c0,-3.87 -3.13,-7 -7,-7zM12,11.5c-1.38,0 -2.5,-1.12 -2.5,-2.5s1.12,-2.5 2.5,-2.5 2.5,1.12 2.5,2.5 -1.12,2.5 -2.5,2.5z" />
+</vector>
+
+<!-- Explanation for junior developers:
+1. This is a vector drawable for a location/pin icon
+2. Vector drawables are resolution-independent and scale without losing quality
+3. The viewportWidth and viewportHeight define the coordinate system
+4. The pathData contains the SVG path that draws the location pin shape
+5. This icon is used next to the location information on event cards
+--> 

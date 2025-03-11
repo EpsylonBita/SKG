@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menu_home" />
+
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_search"
+        android:title="@string/menu_search" />
+
+    <item
+        android:id="@+id/categoriesFragment"
+        android:icon="@drawable/ic_categories"
+        android:title="@string/menu_categories" />
+
+    <item
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/menu_profile" />
+
+</menu>
+
+<!-- Explanation:
+The bottom_nav_menu.xml file defines the items in the bottom navigation bar:
+- Each <item> represents a destination in the app
+- The android:id attribute matches the fragment IDs in the navigation graph
+- The android:icon attribute defines the icon to display
+- The android:title attribute defines the text to display
+- Having consistent IDs with the navigation graph allows automatic navigation
+--> 
