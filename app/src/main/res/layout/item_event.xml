@@ -4,55 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="280dp"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeColor="?attr/colorOutline"
+    app:strokeWidth="0.5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Event Image -->
-        <ImageView
+        <!-- Event Image with ShapeableImageView for rounded corners -->
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/event_image_view"
             android:layout_width="0dp"
-            android:layout_height="160dp"
+            android:layout_height="180dp"
             android:contentDescription="@null"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.App.TopRoundedCorners"
             tools:src="@tools:sample/backgrounds/scenic" />
 
+        <!-- Gradient Overlay -->
+        <View
+            android:id="@+id/gradient_overlay"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_gradient_overlay"
+            app:layout_constraintBottom_toBottomOf="@+id/event_image_view"
+            app:layout_constraintEnd_toEndOf="@+id/event_image_view"
+            app:layout_constraintStart_toStartOf="@+id/event_image_view" />
+
         <!-- Category Badge -->
-        <TextView
+        <com.google.android.material.chip.Chip
             android:id="@+id/event_category_text_view"
+            style="@style/Widget.Material3.Chip.Assist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@drawable/bg_category_badge"
-            android:paddingStart="8dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="4dp"
+            android:layout_margin="12dp"
             android:textAppearance="?attr/textAppearanceCaption"
             android:textColor="@color/white"
+            app:chipBackgroundColor="?attr/colorPrimary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Μουσική" />
 
         <!-- Favorite Button -->
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/favorite_button"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_margin="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/add_to_favorites"
-            android:src="@drawable/ic_favorite"
+            app:icon="@drawable/ic_favorite"
+            app:iconSize="24dp"
+            app:iconTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/white" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Event Title -->
         <TextView
@@ -60,7 +71,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:maxLines="2"
@@ -71,121 +82,143 @@
             app:layout_constraintTop_toBottomOf="@+id/event_image_view"
             tools:text="Συναυλία Κλασικής Μουσικής στο Μέγαρο Μουσικής" />
 
-        <!-- Event Date -->
-        <ImageView
-            android:id="@+id/date_icon"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_calendar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/event_title_text_view"
-            app:tint="?android:attr/textColorSecondary" />
-
-        <TextView
-            android:id="@+id/event_date_text_view"
+        <!-- Event Date and Time -->
+        <LinearLayout
+            android:id="@+id/date_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="?android:attr/textColorSecondary"
-            app:layout_constraintBottom_toBottomOf="@+id/date_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/date_icon"
-            app:layout_constraintTop_toTopOf="@+id/date_icon"
-            tools:text="15 Ιουν 2023, 20:00" />
-
-        <!-- Event Location -->
-        <ImageView
-            android:id="@+id/location_icon"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_location"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/date_icon"
-            app:tint="?android:attr/textColorSecondary" />
-
-        <TextView
-            android:id="@+id/event_location_text_view"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="?android:attr/textColorSecondary"
-            app:layout_constraintBottom_toBottomOf="@+id/location_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/location_icon"
-            app:layout_constraintTop_toTopOf="@+id/location_icon"
-            tools:text="Αθήνα" />
-
-        <!-- Event Price -->
-        <TextView
-            android:id="@+id/event_price_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/bg_price_badge"
-            android:paddingStart="8dp"
-            android:paddingTop="4dp"
-            android:paddingEnd="8dp"
-            android:paddingBottom="4dp"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/event_title_text_view">
+
+            <ImageView
+                android:id="@+id/date_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_calendar"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/event_date_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
+                tools:text="15 Ιουν 2023, 20:00" />
+        </LinearLayout>
+
+        <!-- Event Location -->
+        <LinearLayout
+            android:id="@+id/location_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_container">
+
+            <ImageView
+                android:id="@+id/location_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_location"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/event_location_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
+                tools:text="Αθήνα" />
+        </LinearLayout>
+
+        <!-- Bottom Action Area -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="end|center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/event_location_text_view"
-            tools:text="15.00€" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/location_container">
+
+            <!-- Event Price Badge -->
+            <com.google.android.material.chip.Chip
+                android:id="@+id/event_price_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:chipBackgroundColor="?attr/colorSecondary"
+                app:chipIcon="@drawable/ic_ticket"
+                app:chipIconTint="@color/white"
+                tools:text="15.00€" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Book Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/book_button"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Κράτηση"
+                app:cornerRadius="20dp" />
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
 
 <!-- Explanation for junior developers:
-1. MaterialCardView:
-   - Provides a card container with elevation and rounded corners
-   - Gives a modern, Material Design look to each event item
-   - Fixed width (280dp) makes it suitable for horizontal scrolling
+1. Material Design 3 Improvements:
+   - Updated to use ShapeableImageView for better image handling
+   - Added a gradient overlay to improve text visibility on images
+   - Replaced the category badge with a Material Chip component
+   - Changed the favorite button to a Material IconButton
+   - Added a Book button using Material TonalButton style
 
-2. Event Image:
-   - Takes up the top portion of the card
-   - Uses scaleType="centerCrop" to fill the space without distortion
-   - Fixed height ensures consistent card appearance
+2. Visual Enhancements:
+   - Increased card corner radius for a more modern look
+   - Added subtle stroke to define card boundaries
+   - Enhanced spacing throughout the card for better visual hierarchy
+   - Improved icon and text color consistency using theme attributes
+   - Grouped related elements in LinearLayouts for better organization
 
-3. Category Badge:
-   - Positioned in the top-left corner over the image
-   - Semi-transparent background makes it visible regardless of image content
-   - Small text size (caption) keeps it unobtrusive
+3. New Features:
+   - Added a Book button for direct action
+   - Gradient overlay improves the transition between image and content
+   - Icons now use the primary color for better visual consistency
 
-4. Favorite Button:
-   - Positioned in the top-right corner over the image
-   - Uses selectableItemBackgroundBorderless for a circular ripple effect
-   - White tint ensures visibility on any image
-
-5. Text Information:
-   - Title uses larger text with bold style for emphasis
-   - Date and location include small icons for visual cues
-   - All text fields use ellipsize="end" to handle overflow gracefully
-
-6. Price Badge:
-   - Positioned at the bottom-right corner
-   - Distinctive background color draws attention
-   - Bold text emphasizes the price information
-
-7. Layout Structure:
+4. Layout Structure:
+   - Main container is a MaterialCardView with proper styling
    - ConstraintLayout efficiently positions all elements
-   - Consistent margins (16dp for content, 8dp for icons) create visual rhythm
-   - Proper content descriptions for accessibility
+   - LinearLayouts group related items for better organization
+   - Bottom action area allows for multiple actions with proper alignment
 --> 

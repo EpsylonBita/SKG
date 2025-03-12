@@ -14,7 +14,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:textAppearance="?attr/textAppearanceHeadline6"
-        android:textColor="?android:attr/textColorPrimary"
+        android:textColor="?attr/colorOnSurface"
+        android:fontFamily="@font/roboto_medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/see_all_button"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,13 +24,12 @@
 
     <Button
         android:id="@+id/see_all_button"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
+        style="@style/Widget.Material3.Button.TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="@string/see_all"
         android:textAllCaps="false"
-        android:textColor="?attr/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,10 +38,12 @@
 
 <!-- Explanation for junior developers:
 1. This layout creates a reusable section header with a title and "See All" button
-2. It's designed to be included in multiple places in the HomeFragment
-3. The ConstraintLayout efficiently positions the elements with minimal nesting
-4. The title uses the headline6 text appearance for consistent typography
-5. The "See All" button uses a TextButton style for a clean, minimal look
-6. The layout uses appropriate margins and padding for proper spacing
-7. The tools:text attribute helps visualize the layout in the design editor
+2. Updated to use Material Design 3 components and styling
+3. Added a specific font family for better typography
+4. The ripple effect on the button uses the colorPrimaryContainer for a more cohesive look
+5. The ConstraintLayout efficiently positions the elements with minimal nesting
+6. The title uses the headline6 text appearance for consistent typography
+7. The "See All" button uses a TextButton style for a clean, minimal look
+8. The layout uses appropriate margins and padding for proper spacing
+9. The tools:text attribute helps visualize the layout in the design editor
 --> 

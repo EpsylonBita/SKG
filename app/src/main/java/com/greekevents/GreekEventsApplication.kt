@@ -1,6 +1,7 @@
 package com.greekevents
 
 import android.app.Application
+import android.util.Log
 import dagger.hilt.android.HiltAndroidApp
 
 /**
@@ -16,11 +17,33 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class GreekEventsApplication : Application() {
     
+    companion object {
+        private const val TAG = "GreekEventsApp"
+    }
+    
     override fun onCreate() {
-        super.onCreate()
-        // Initialize any app-wide libraries or configurations here
-        // For example, we might initialize crash reporting tools, analytics,
-        // or other libraries that need application context.
+        // Add logging before super.onCreate() to detect issues with parent initialization
+        Log.d(TAG, "Application onCreate: Starting initialization")
+        
+        try {
+            super.onCreate()
+            Log.d(TAG, "Application onCreate: Super initialization completed")
+            
+            // Initialize any app-wide libraries or configurations here
+            // For example, we might initialize crash reporting tools, analytics,
+            // or other libraries that need application context.
+            
+            Log.d(TAG, "Application onCreate: Initialization completed successfully")
+        } catch (e: Exception) {
+            // Log any exceptions that occur during initialization
+            Log.e(TAG, "Application initialization failed", e)
+            // Consider reporting this exception to a crash reporting service
+        }
+    }
+    
+    override fun onTerminate() {
+        Log.d(TAG, "Application onTerminate: Cleaning up resources")
+        super.onTerminate()
     }
 }
 
@@ -33,3 +56,4 @@ class GreekEventsApplication : Application() {
 // 5. By using Hilt, we can easily manage dependencies throughout the app
 // 6. The onCreate() method is called when the application is starting, before any
 //    Activity, Service, or Receiver objects have been created 
+// 7. We've added try-catch and logging to help identify initialization issues 

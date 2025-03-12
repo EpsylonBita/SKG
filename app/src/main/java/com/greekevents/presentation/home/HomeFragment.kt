@@ -11,13 +11,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.greekevents.R
 import com.greekevents.databinding.FragmentHomeBinding
 import com.greekevents.presentation.home.adapter.EventAdapter
 import com.greekevents.presentation.home.adapter.EventCategoryAdapter
+import com.greekevents.presentation.util.SpacingItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import com.google.android.material.button.MaterialButton
 
 /**
  * HomeFragment displays the main screen of the application with personalized event 
@@ -65,34 +68,107 @@ class HomeFragment : Fragment() {
     }
     
     private fun setupRecyclerViews() {
+        // Create spacing decorations
+        val horizontalSpacing = resources.getDimensionPixelSize(R.dimen.item_spacing)
+        val itemDecoration = SpacingItemDecoration(horizontalSpacing, includeEdge = true)
+        
         // Set up recommended events RecyclerView
         binding.recommendedEventsRecyclerView.apply {
             adapter = recommendedEventsAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+            if (itemDecorationCount == 0) {
+                addItemDecoration(itemDecoration)
+            }
         }
         
         // Set up popular events RecyclerView
         binding.popularEventsRecyclerView.apply {
             adapter = popularEventsAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+            if (itemDecorationCount == 0) {
+                addItemDecoration(itemDecoration)
+            }
         }
         
         // Set up nearby events RecyclerView
         binding.nearbyEventsRecyclerView.apply {
             adapter = nearbyEventsAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+            if (itemDecorationCount == 0) {
+                addItemDecoration(itemDecoration)
+            }
         }
         
-        // Set up categories RecyclerView
+        // Set up categories RecyclerView with GridLayoutManager
         binding.categoriesRecyclerView.apply {
             adapter = categoryAdapter
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            // Calculate the number of columns based on screen width
+            val spanCount = calculateOptimalSpanCount()
+            layoutManager = GridLayoutManager(requireContext(), spanCount, GridLayoutManager.HORIZONTAL, false)
+            setHasFixedSize(true)
+            if (itemDecorationCount == 0) {
+                addItemDecoration(itemDecoration)
+            }
         }
+        
+        // Apply custom animations to RecyclerViews
+        applyRecyclerViewAnimations()
+    }
+    
+    /**
+     * Applies custom animations to RecyclerViews for a more engaging UI
+     */
+    private fun applyRecyclerViewAnimations() {
+        val recyclerViews = listOf(
+            binding.recommendedEventsRecyclerView,
+            binding.popularEventsRecyclerView,
+            binding.nearbyEventsRecyclerView,
+            binding.categoriesRecyclerView
+        )
+        
+        recyclerViews.forEach { recyclerView ->
+            recyclerView.itemAnimator?.apply {
+                // Set custom durations for animations
+                addDuration = 300
+                removeDuration = 300
+                moveDuration = 300
+                changeDuration = 300
+            }
+        }
+    }
+    
+    /**
+     * Calculates the optimal number of columns for the grid based on screen width
+     * This ensures the grid looks good on different screen sizes
+     */
+    private fun calculateOptimalSpanCount(): Int {
+        // Get the screen width
+        val displayMetrics = resources.displayMetrics
+        val screenWidth = displayMetrics.widthPixels / displayMetrics.density
+        
+        // Each category card is approximately 160dp wide plus margins
+        val cardWidth = 180f // 160dp card + 20dp margins
+        
+        // Calculate how many cards can fit in the screen width
+        val spanCount = (screenWidth / cardWidth).toInt()
+        
+        // Return at least 1 column, at most 3
+        return spanCount.coerceIn(1, 3)
     }
     
     private fun observeViewModel() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                // Collect loading state
+                launch {
+                    viewModel.isLoading.collectLatest { isLoading ->
+                        updateLoadingState(isLoading)
+                    }
+                }
+                
                 // Collect recommended events
                 launch {
                     viewModel.recommendedEvents.collectLatest { events ->
@@ -127,20 +203,16 @@ class HomeFragment : Fragment() {
                     }
                 }
                 
-                // Collect loading state
-                launch {
-                    viewModel.isLoading.collectLatest { isLoading ->
-                        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
-                    }
-                }
-                
                 // Collect error messages
                 launch {
                     viewModel.errorMessage.collectLatest { errorMessage ->
                         errorMessage?.let {
-                            // Show error message (could use a Snackbar or custom view)
+                            // Show error message
                             binding.errorView.visibility = View.VISIBLE
                             binding.errorTextView.text = it
+                            binding.contentContainer.visibility = View.GONE
+                            binding.shimmerLayout.visibility = View.GONE
+                            binding.shimmerLayout.stopShimmer()
                         } ?: run {
                             binding.errorView.visibility = View.GONE
                         }
@@ -150,22 +222,42 @@ class HomeFragment : Fragment() {
         }
     }
     
+    /**
+     * Updates the UI based on loading state
+     */
+    private fun updateLoadingState(isLoading: Boolean) {
+        if (isLoading) {
+            // Show shimmer effect
+            binding.shimmerLayout.visibility = View.VISIBLE
+            binding.shimmerLayout.startShimmer()
+            binding.contentContainer.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
+            binding.errorView.visibility = View.GONE
+        } else {
+            // Hide shimmer effect and show content
+            binding.shimmerLayout.stopShimmer()
+            binding.shimmerLayout.visibility = View.GONE
+            binding.contentContainer.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.GONE
+        }
+    }
+    
     private fun setupListeners() {
         // Set up "See All" buttons to navigate to respective list screens
-        binding.seeAllRecommendedButton.setOnClickListener {
+        (binding.recommendedEventsHeader.getRoot().findViewById<View>(R.id.see_all_button) as? MaterialButton)?.setOnClickListener {
             // Navigate to all recommended events
             // Implementation will depend on navigation design
         }
         
-        binding.seeAllPopularButton.setOnClickListener {
+        (binding.popularEventsHeader.getRoot().findViewById<View>(R.id.see_all_button) as? MaterialButton)?.setOnClickListener {
             // Navigate to all popular events
         }
         
-        binding.seeAllNearbyButton.setOnClickListener {
+        (binding.nearbyEventsHeader.getRoot().findViewById<View>(R.id.see_all_button) as? MaterialButton)?.setOnClickListener {
             // Navigate to all nearby events
         }
         
-        binding.seeAllCategoriesButton.setOnClickListener {
+        (binding.categoriesHeader.getRoot().findViewById<View>(R.id.see_all_button) as? MaterialButton)?.setOnClickListener {
             // Navigate to categories screen
             findNavController().navigate(R.id.action_homeFragment_to_categoriesFragment)
         }

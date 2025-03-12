@@ -2,11 +2,13 @@ package com.greekevents.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.greekevents.data.mock.MockDataProvider
 import com.greekevents.domain.model.Category
 import com.greekevents.domain.model.Event
 import com.greekevents.domain.repository.EventRepository
 import com.greekevents.domain.repository.RecommendationRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -61,72 +63,25 @@ class HomeViewModel @Inject constructor(
         _isLoading.value = true
         _errorMessage.value = null
         
-        // Load recommended events
         viewModelScope.launch {
             try {
-                recommendationRepository.getPersonalizedRecommendations()
-                    .catch { e ->
-                        handleError("Error loading recommendations: ${e.message}")
-                    }
-                    .collect { events ->
-                        _recommendedEvents.value = events
-                    }
+                // Simulate network delay
+                delay(1000)
+                
+                // Use mock data for now
+                val mockEvents = MockDataProvider.getMockEvents()
+                val mockCategories = MockDataProvider.getMockCategories()
+                
+                // Distribute events to different sections
+                _recommendedEvents.value = mockEvents.shuffled().take(3)
+                _popularEvents.value = mockEvents.shuffled().take(4)
+                _nearbyEvents.value = mockEvents.shuffled().take(3)
+                _categories.value = mockCategories
+                
+                _isLoading.value = false
             } catch (e: Exception) {
-                handleError("Error loading recommendations: ${e.message}")
+                handleError("Error loading data: ${e.message}")
             }
-        }
-        
-        // Load popular events
-        viewModelScope.launch {
-            try {
-                recommendationRepository.getTrendingEvents()
-                    .catch { e ->
-                        handleError("Error loading popular events: ${e.message}")
-                    }
-                    .collect { events ->
-                        _popularEvents.value = events
-                    }
-            } catch (e: Exception) {
-                handleError("Error loading popular events: ${e.message}")
-            }
-        }
-        
-        // Load nearby events
-        // In a real app, we would get the user's location first
-        viewModelScope.launch {
-            try {
-                // Using default Athens coordinates as fallback
-                recommendationRepository.getLocationBasedRecommendations(
-                    latitude = 37.9838, // Athens latitude
-                    longitude = 23.7275  // Athens longitude
-                )
-                    .catch { e ->
-                        handleError("Error loading nearby events: ${e.message}")
-                    }
-                    .collect { events ->
-                        _nearbyEvents.value = events
-                    }
-            } catch (e: Exception) {
-                handleError("Error loading nearby events: ${e.message}")
-            }
-        }
-        
-        // Load categories
-        viewModelScope.launch {
-            try {
-                eventRepository.getAllCategories()
-                    .catch { e ->
-                        handleError("Error loading categories: ${e.message}")
-                    }
-                    .collect { categoryList ->
-                        _categories.value = categoryList
-                    }
-            } catch (e: Exception) {
-                handleError("Error loading categories: ${e.message}")
-            }
-            
-            // All data loaded
-            _isLoading.value = false
         }
     }
     

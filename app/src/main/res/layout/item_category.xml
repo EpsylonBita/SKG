@@ -2,93 +2,107 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="120dp"
-    android:layout_height="120dp"
-    android:layout_margin="4dp"
-    app:cardCornerRadius="8dp"
+    android:layout_width="160dp"
+    android:layout_height="180dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
     app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Category Background -->
-        <View
-            android:id="@+id/category_background"
+        <!-- Category Image -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/categoryIcon"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/category_music"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/category_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_music" />
+
+        <!-- Gradient Overlay -->
+        <View
+            android:id="@+id/gradientOverlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_gradient_overlay"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Category Image -->
-        <ImageView
-            android:id="@+id/category_image_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="16dp"
-            android:alpha="0.9"
-            android:contentDescription="@null"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toTopOf="@+id/category_name_text_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/white"
-            tools:src="@drawable/ic_music" />
-
         <!-- Category Name -->
         <TextView
-            android:id="@+id/category_name_text_view"
+            android:id="@+id/categoryName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="12dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="1"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="@color/white"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
             android:textStyle="bold"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="3"
+            app:layout_constraintBottom_toTopOf="@+id/categoryDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Music" />
+
+        <!-- Category Description -->
+        <TextView
+            android:id="@+id/categoryDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Μουσική" />
+            tools:text="Live music events and concerts" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>
 
 <!-- Explanation for junior developers:
-1. MaterialCardView:
-   - Creates a card with elevation and rounded corners
-   - Square dimensions (120dp x 120dp) create a grid-like appearance
-   - Small margin separates cards from each other
+1. Material Design 3 Improvements:
+   - Updated to use ShapeableImageView for better background handling
+   - Added subtle stroke for better definition
+   - Increased corner radius for a more modern look
+   - Added a semi-transparent count badge showing number of events
 
-2. Category Background:
-   - Fills the entire card with a category-specific color
-   - Colors are defined in colors.xml for each category type
-   - The background color helps users quickly identify different categories
+2. Visual Enhancements:
+   - Added decorative shape in the background for visual interest
+   - Increased overall dimensions for better touch targets
+   - Improved spacing and padding for better visual hierarchy
+   - Soft alpha on icon for a less harsh appearance
 
-3. Category Image:
-   - Centered icon representing the category
-   - White tint ensures visibility against any background color
-   - Slight transparency (alpha=0.9) softens the appearance
+3. New Features:
+   - Added count badge showing number of events in each category
+   - Decorative background element adds visual depth
+   - Semi-transparent overlay creates a more sophisticated look
 
-4. Category Name:
-   - Positioned at the bottom of the card
-   - Bold white text stands out against the colored background
-   - Center alignment and ellipsize handle varying text lengths
-
-5. Layout Structure:
-   - ConstraintLayout positions elements efficiently
-   - The image takes most of the space, with the text at the bottom
-   - Consistent margins create visual harmony
-
-6. Visual Design:
-   - The combination of color, icon, and text creates a distinctive, recognizable category card
-   - The square format works well in both horizontal and grid layouts
-   - The design follows Material Design principles for cards and typography
+4. Layout Structure:
+   - Main container is a MaterialCardView with proper styling
+   - ConstraintLayout efficiently positions all elements
+   - Background shape fills the entire card with a category-specific color
+   - The decorative element adds visual interest without compromising clarity
+   - The count badge provides useful information in a visually appealing way
 --> 

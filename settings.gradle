@@ -1,0 +1,2 @@
+rootProject.name = "AndroidEventDiscovery"
+include ':app' 

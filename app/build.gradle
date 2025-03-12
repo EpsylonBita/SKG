@@ -4,26 +4,38 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
-    id 'com.google.gms.google-services'
+    // Temporarily commenting out Google Services plugin
+    // id 'com.google.gms.google-services'
 }
 
 android {
     namespace 'com.greekevents'
-    compileSdk rootProject.compileSdkVersion
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.greekevents"
         minSdk rootProject.minSdkVersion
-        targetSdk rootProject.targetSdkVersion
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        
+        // Add this block for kapt options
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                    "room.schemaLocation": "$projectDir/schemas",
+                    "room.incremental": "true",
+                    "room.expandProjection": "true"
+                ]
+            }
+        }
     }
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -35,10 +47,59 @@ android {
     
     kotlinOptions {
         jvmTarget = '17'
+        freeCompilerArgs += [
+            "-Xjvm-default=all",
+            "-Xopt-in=kotlin.RequiresOptIn"
+        ]
     }
     
     buildFeatures {
         viewBinding true
+    }
+    
+    lint {
+        abortOnError false
+        baseline = file("lint-baseline.xml")
+    }
+}
+
+// Fix for kapt JVM target compatibility
+kotlin {
+    jvmToolchain(17)
+}
+
+// Add kapt configuration for Java module system
+kapt {
+    correctErrorTypes true
+    useBuildCache true
+    includeCompileClasspath = false
+    
+    // Only add Room arguments if Room compiler is enabled
+    if (project.hasProperty('useRoomCompiler') && project.property('useRoomCompiler') == 'true') {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+            arg("room.incremental", "true")
+            arg("room.expandProjection", "true")
+        }
+    }
+    
+    // Only apply these options if using JDK 9+
+    if (JavaVersion.current().isJava9Compatible()) {
+        javacOptions {
+            option("-source", "17")
+            option("-target", "17")
+            // Add JVM arguments to allow access to internal Java compiler classes
+            option("-J--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED")
+            option("-J--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED")
+            option("-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED")
+            option("-J--add-opens=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED")
+            option("-J--add-opens=jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED")
+            option("-J--add-opens=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED")
+            option("-J--add-opens=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED")
+            option("-J--add-opens=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED")
+            option("-J--add-opens=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED")
+            option("-J--add-opens=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED")
+        }
     }
 }
 
@@ -49,13 +110,15 @@ android {
 // - Build types for different environments (release with minification enabled)
 // - Java and Kotlin version compatibility
 // - ViewBinding feature for type-safe view access
+// - Additional kapt configuration for Java module system
 
 dependencies {
     // Android core libraries
     implementation "androidx.core:core-ktx:$coreKtxVersion"
     implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "com.google.android.material:material:$materialVersion"
+    implementation "com.google.android.material:material:1.11.0"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     
     // Architecture components
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
@@ -69,7 +132,10 @@ dependencies {
     // Room database
     implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
-    kapt "androidx.room:room-compiler:$roomVersion"
+    // Conditionally apply Room compiler
+    if (project.hasProperty('useRoomCompiler') && project.property('useRoomCompiler') == 'true') {
+        kapt "androidx.room:room-compiler:$roomVersion"
+    }
     
     // Retrofit for network calls
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -81,16 +147,20 @@ dependencies {
     
     // Hilt for dependency injection
     implementation "com.google.dagger:hilt-android:$hiltVersion"
-    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    // Conditionally apply Hilt compiler
+    if (project.hasProperty('useHiltCompiler') && project.property('useHiltCompiler') == 'true') {
+        kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    }
     
     // Glide for image loading
     implementation "com.github.bumptech.glide:glide:$glideVersion"
-    kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    // Conditionally apply Glide compiler
+    if (project.hasProperty('useGlideCompiler') && project.property('useGlideCompiler') == 'true') {
+        kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    }
     
-    // Firebase for authentication and analytics
-    implementation platform("com.google.firebase:firebase-bom:$firebaseVersion")
-    implementation "com.google.firebase:firebase-auth-ktx"
-    implementation "com.google.firebase:firebase-analytics-ktx"
+    // Shimmer effect for loading states
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
     
     // Testing
     testImplementation 'junit:junit:4.13.2'
@@ -109,3 +179,10 @@ dependencies {
 // - Glide efficiently loads and caches images
 // - Firebase provides authentication and analytics services
 // - Testing libraries support unit and instrumentation tests 
+
+// Add properties to control whether compilers are used
+ext {
+    useRoomCompiler = false  // Set to true when you need Room compiler
+    useHiltCompiler = false  // Set to true when you need Hilt compiler
+    useGlideCompiler = false // Set to true when you need Glide compiler
+} 

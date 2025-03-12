@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App information -->
-    <string name="app_name">Εκδηλώσεις Ελλάδας</string>
+    <string name="app_name">Greek Events</string>
     
     <!-- Navigation Labels -->
-    <string name="menu_home">Αρχική</string>
-    <string name="menu_search">Αναζήτηση</string>
-    <string name="menu_categories">Κατηγορίες</string>
-    <string name="menu_profile">Προφίλ</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_categories">Categories</string>
+    <string name="menu_profile">Profile</string>
     <string name="menu_favorites">Αγαπημένα</string>
     
     <!-- Search Screen -->
@@ -16,9 +16,10 @@
     <string name="filter_by_location">Τοποθεσία</string>
     <string name="recent_searches">Πρόσφατες αναζητήσεις</string>
     <string name="clear_all">Καθαρισμός όλων</string>
-    <string name="search_results">Αποτελέσματα Αναζήτησης</string>
+    <string name="search_results">Search Results</string>
     
     <!-- Categories -->
+    <string name="category_icon">Category Icon</string>
     <string name="category_music">Μουσική</string>
     <string name="category_sports">Αθλητικά</string>
     <string name="category_culture">Πολιτισμός</string>
@@ -31,7 +32,7 @@
     <string name="category_other">Άλλα</string>
     
     <!-- Event Details -->
-    <string name="event_details">Λεπτομέρειες Εκδήλωσης</string>
+    <string name="event_details">Event Details</string>
     <string name="event_date">Ημερομηνία</string>
     <string name="event_time">Ώρα</string>
     <string name="event_location">Τοποθεσία</string>
@@ -48,12 +49,12 @@
     <string name="related_events">Σχετικές εκδηλώσεις</string>
     
     <!-- Authentication -->
-    <string name="login">Σύνδεση</string>
-    <string name="register">Εγγραφή</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
     <string name="email">Email</string>
     <string name="password">Κωδικός</string>
     <string name="confirm_password">Επιβεβαίωση κωδικού</string>
-    <string name="forgot_password">Ξεχάσατε τον κωδικό σας;</string>
+    <string name="forgot_password">Forgot Password</string>
     <string name="login_success">Επιτυχής σύνδεση!</string>
     <string name="login_failed">Η σύνδεση απέτυχε</string>
     <string name="logout">Αποσύνδεση</string>
@@ -62,11 +63,11 @@
     
     <!-- Profile -->
     <string name="profile_title">Το προφίλ μου</string>
-    <string name="edit_profile">Επεξεργασία προφίλ</string>
-    <string name="my_events">Οι εκδηλώσεις μου</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="my_events">My Events</string>
     <string name="past_events">Προηγούμενες εκδηλώσεις</string>
     <string name="upcoming_events">Προσεχείς εκδηλώσεις</string>
-    <string name="settings">Ρυθμίσεις</string>
+    <string name="settings">Settings</string>
     <string name="notifications">Ειδοποιήσεις</string>
     <string name="preferences">Προτιμήσεις</string>
     <string name="language">Γλώσσα</string>
@@ -101,7 +102,7 @@
     <string name="this_weekend">Αυτό το Σαββατοκύριακο</string>
     <string name="today">Σήμερα</string>
     <string name="tomorrow">Αύριο</string>
-    <string name="free">Δωρεάν</string>
+    <string name="free">Free</string>
     <string name="refresh">Ανανέωση</string>
     
     <!-- Empty States -->
@@ -117,6 +118,8 @@
     <string name="empty_search_message">Δοκιμάστε διαφορετικούς όρους αναζήτησης ή φίλτρα.</string>
     <string name="empty_favorites">Δεν έχετε αγαπημένες εκδηλώσεις</string>
     <string name="empty_favorites_message">Προσθέστε εκδηλώσεις στα αγαπημένα σας για να τις βρείτε εύκολα αργότερα.</string>
+    <string name="welcome_message">Καλώς ήρθατε</string>
+    <string name="app_title">Event Explorer</string>
 </resources>
 
 <!-- Explanation:

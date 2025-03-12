@@ -46,7 +46,7 @@ class EventAdapter(
 
         init {
             binding.root.setOnClickListener {
-                val position = bindingAdapterPosition
+                val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     val event = getItem(position)
                     onEventClick(event.id)
@@ -140,7 +140,7 @@ class EventAdapter(
  * 5. Click Listeners:
  *    - We use a lambda (onEventClick) to handle item clicks
  *    - The click listener is set in the ViewHolder's init block
- *    - bindingAdapterPosition gets the current position in the adapter
+ *    - adapterPosition gets the current position in the adapter
  * 
  * 6. Glide Image Loading:
  *    - Glide is a popular image loading library
